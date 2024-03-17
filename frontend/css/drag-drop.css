@@ -1,0 +1,54 @@
+.drag-drop-wrapper
+{
+ text-align:center;
+ margin:0 auto;
+ padding:0px;
+}
+
+.drag-drop-wrapper input[type="file"]
+{
+  width:0;
+  height: 0;
+  overflow: hidden;
+}
+
+.drop-area
+{
+ height:200px;
+ background-color:white;
+ border:3px dashed grey;
+ cursor: pointer;
+}
+
+.drop-text
+{
+ margin-top:70px;
+ color:grey;
+ font-size:25px;
+ font-weight:bold;
+}
+.drop-area img
+{
+ max-width:200px;
+}
+
+/* container */
+.responsive-two-columns {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+/* columns */
+.responsive-two-columns > * {
+  width:100%;
+  padding:1rem;
+}
+
+/* tablet breakpoint */
+@media (min-width:768px) {
+  .responsive-two-columns > * {
+      width:50%;
+  }
+}
+
+h5 {text-align: center;}
