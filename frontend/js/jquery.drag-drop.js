@@ -63,12 +63,11 @@
 
 			function createFormData(files)
 		    {
-			     var fileForm = new FormData();
-			     numberOfFiles = files.length;
-			     name = Date.now();
-			     for(i=0; i < numberOfFiles; i++)
-			     {
-			     	fileForm.append('file',files[i]);
+				for(i=0; i < files.length; i++)
+				{
+					var fileForm = new FormData();
+					name = Date.now();  
+			     	fileForm.append('file', files[i]);
 			     	$(fileList).append('<div class = "progress-bar-wrapper"><div class="progress  mt-3 d-inline-block" style = "width:calc(100% - 25px)" name="'+ (name+i) +'">'+
   											'<div class="progress-bar progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>'+
 										'</div><span class="pull-right" style="margin-top: .7rem !important;"><a href="javascript:;" class = "remove-file"><i class="fa fa-times-circle text-danger"></i></a> <input type = "hidden" name = "'+ settings.inputName + '[]" /></span> <span> '+ files[i].name +'</span></div>');
@@ -112,7 +111,7 @@
 		                    	if(e.lengthComputable){
 							        var max = e.total;
 							        var current = e.loaded;
-							        var Percentage = (current * 100)/max;
+							        var Percentage = Math.round( ((current * 100)/max) *100) / 100;
 							        bar = $('div.progress[name="'+fileName+'"]').find('.progress-bar');
 							        $(bar).css('width',Percentage+'%');
 							        $(bar).text(Percentage+'%');
