@@ -44,6 +44,11 @@
   padding:1rem;
 }
 
+.container-pad {
+  padding: 1.5rem;
+  padding-bottom: 8rem;
+}
+
 /* tablet breakpoint */
 @media (min-width:768px) {
   .responsive-two-columns > * {
@@ -52,3 +57,18 @@
 }
 
 h5 {text-align: center;}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+  font-size: 0.9rem;
+}
+
+.gray-bar {
+	background-color: lightgray;
+	color: white;
+	padding: 0.3rem 0px 0.4rem 0px;
+	width: 100%;
+}

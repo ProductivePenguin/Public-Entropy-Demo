@@ -129,7 +129,14 @@
 			        	keypattern = (settings.uploadedFileUrl) ? settings.uploadedFileUrl : 'value';
 
 			        	$('div[name="'+fileName+'"]').parents('.progress-bar-wrapper').find('input').val(objectMap(data,keypattern));
+						
 						console.log(data);
+
+						let resultContainer = $('#results')
+						$(resultContainer).append('<div class = "progress-bar-wrapper"><div class="progress mt-3 d-inline-block" style = "width:calc(100% - 25px); background-color: lightgreen";"'+ (name+i) +'">'+
+												'<div class="" role="progressbar" style="width: 100%; font-family: monospace;"> Done: ' + data.filename +'</div>'+
+												'</div><span class="pull-right" style="margin-top: .7rem !important;"></span> <span style= "font-weight: 600;" > '+ data.filename + "&nbsp ➡️ &nbsp" + data.category +'</span></div>');
+						console.log(data.category);
 				    }
 				});
 		    }

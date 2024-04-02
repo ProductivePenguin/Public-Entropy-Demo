@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-			Drag and Drop To upload File With Preview
+			Entropy-Demo
 		</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -14,6 +14,8 @@
 	
 	<body class="bg-light">
 
+		<div style="text-align: center; font-size: 2.5rem; padding-top: 2rem;"> <span style="color:purple;">Demo:</span> <em>Judging a Video by its Bitrate Cover</em></div>
+
 		<div class="container p-4" >
 			<div class="drag-drop">
 				
@@ -21,20 +23,28 @@
 		</div>
 
 		<div class="responsive-two-columns">
-			<div class="container-md p-4 border-right border-bottom " id="fileList">
+			<div class="container-md container-pad border-right border-bottom " id="fileList">
 				<h5 >Files Uploaded</h5>
 
 			</div>
-			<div class="container-md p-4 border-bottom">
+			<div class="container-md container-pad border-bottom " id="results">
 				<h5>Classification Results</h5>
+
 				
 			</div>
 		</div>
+
+		<footer>
+			<div class="gray-bar">
+				Copyright <span id="copyright">&copy;</span> 2024 The Felix Gan
+				Publication. All Rights Reserved.
+			</div>
+		</footer>
 		
 		<script type="text/javascript" src="./js/jquery.drag-drop.js"></script>
 		<script type="text/javascript">
 			$('.drag-drop').dragDrop({'label': 'Drag & Drop Video Files',
-										'url': 'http://127.0.0.1:5000/upload',
+										'url': 'http://127.0.0.1:8080/upload',
 									});
 		</script>
 

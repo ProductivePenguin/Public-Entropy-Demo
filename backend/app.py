@@ -4,8 +4,10 @@ from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
 from datetime import datetime
+from video_classification_model import run_inference
 import multidict  # I suppose this is a thing... but front-end has changed to not use this
 # from flask.ext.cors import CORS, cross_origin
+
 
 # initialization
 app = Flask(__name__)
@@ -15,7 +17,8 @@ cors = CORS(app)
 
 # cors = CORS(app, resources={r"/*": {"origins": "http://localhost:port"}})
 
-app.config['UPLOAD_FOLDER'] = 'downloads/'
+cur_directory = os.path.dirname(os.path.realpath(__file__))
+app.config['UPLOAD_FOLDER'] = f'{cur_directory}/downloads/'
 
 @app.route("/")
 def home():
@@ -59,14 +62,20 @@ def upload():
         file.save(filepath)
         category = classify_video(filepath)
 
-    return jsonify({'message': 'File uploaded successfully', 'filename': file.filename, 'customField': custom_field_value}), 200
+    return jsonify({'message': 'File uploaded successfully', 
+                    'filename': file.filename, 
+                    'customField': custom_field_value,
+                    'category': category
+                    }), 200
 
+def classify_video(filepath):
+    results = run_inference(filepath)
+    
+    if os.path.exists(filepath):
+        os.remove(filepath)
 
-def classify_video(filename):
-    # 在此处添加视频分类逻辑，这里只是一个示例
-    return "This is indeed quite the problem to be solved."
-
+    return results
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8080)
